@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FLauncher Error Codes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #222;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .error {
+            background: #fff;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-left: 5px solid #ffcc00;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .code {
+            font-weight: bold;
+            color: #c00;
+        }
+        .cause, .fix {
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>FLauncher Error Codes</h1>
+
+    <div class="error">
+        <div class="code">1x000</div>
+        <div class="cause">Cause: No versions found in Launcher/versions</div>
+        <div class="fix">Fix: Add at least one version folder</div>
+    </div>
+
+    <div class="error">
+        <div class="code">1x001</div>
+        <div class="cause">Cause: .attr file missing from selected version</div>
+        <div class="fix">Fix: Make sure HexLoom created the .attr file</div>
+    </div>
+
+    <div class="error">
+        <div class="code">1x002</div>
+        <div class="cause">Cause: Non-folder file found in Launcher/versions</div>
+        <div class="fix">Fix: Remove or move files like .DS_Store, text files, etc.</div>
+    </div>
+
+    <!-- Add more errors here -->
+</body>
+</html>
