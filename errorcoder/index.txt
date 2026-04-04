@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nexora Error Codes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #222;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .error {
+            background: #fff;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-left: 5px solid #ffcc00;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .code {
+            font-weight: bold;
+            color: #c00;
+        }
+        .cause, .fix {
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Finder Error Codes</h1>
+
+    <div class="error">
+        <div class="code">1x000</div>
+        <div class="cause">Cause: No versions found in Launcher/versions</div>
+    </div>
+
+    <div class="error">
+        <div class="code">1x001</div>
+        <div class="cause">Cause: .attr file missing from selected version</div>
+    </div>
+
+    <div class="error">
+        <div class="code">1x002</div>
+        <div class="cause">Cause: Non-folder file found in Launcher/versions</div>
+    </div>
+
+    <!-- Add more errors here -->
+</body>
+</html>
