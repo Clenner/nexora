@@ -49,6 +49,16 @@
         <div class="cause">Cause: Non-folder file found in Launcher/versions</div>
     </div>
 
+    <div class="error">
+        <div class="code">1x003</div>
+        <div class="cause">Cause: Invalid .attr JSON (malformed or unparseable)</div>
+    </div>
+
+    <div class="error">
+        <div class="code">1x004</div>
+        <div class="cause">Cause: Missing src folder in selected version</div>
+    </div>
+
     <!-- Add more errors here -->
 </body>
 </html>
