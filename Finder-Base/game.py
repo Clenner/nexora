@@ -8,7 +8,7 @@ versionInfo = {
     "attributes": {},
     "blocks": {},
     "dimensions": {},
-    "entities": {},
+    "entitys": {},
     "gooeys": {},
     "items": {},
     "processes": {},
@@ -21,7 +21,7 @@ def crash(num):
     return False
 
 def setUpROM():
-    for folder_name in ["blocks", "dimensions", "entities", "recipes", "tags"]:
+    for folder_name in ["blocks", "dimensions", "entitys", "recipes", "tags"]:
 
         folder_path = os.path.join(VERSION_PATH, "src", folder_name)
 
