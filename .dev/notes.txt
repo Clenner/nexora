@@ -1,0 +1,31 @@
+Nexora Online Package (HTML GITHUB PAGES)
+Webster
+WLauncher
+HexLoom Sitely
+
+Nexora Porta-Package (MOBILE DEVICES, APK??)
+Locator
+YLauncher
+HexLoom Portable
+
+Nexora Web Package (CASUAL, PC)
+Finder
+FLauncher
+HexLoom Basic
+
+Nexora Primitive Package (CMD/CLI, TUI INTERFACE)
+Telder
+GLauncher
+HLBT
+
+Nexora Hack Package (MICROPYTHON, C? FZ SUPPORT)
+Finder Zero
+ZLauncher
+uHLBT
+
+HexLoom Concept:
+
+-has every official RELEASE version to fork, has different modes.
+-all HLs contain all modes, for full cross-platform modding.
+-has custom option, fork empty. modes still interchangeable
+-MCreator GUI
