@@ -21,8 +21,8 @@ versionInfo = {
 
 randomAccessMemory = {}
 
-def crash(num):
-    print(f"Crash: Error code '{num}'")
+def crash(num, e=""):
+    print(f"Crash: Error code '{num}', additional error info: '{e}'")
     return False
 
 class Entity:
@@ -67,10 +67,15 @@ def setUpROM():
                 print(f"[ROM ERROR] Failed to load {file_path}: {e}")
                 versionInfo[folder_name][name] = None
     for asset in os.listdir(os.path.join(VERSION_PATH, "src", "assets")):
-        image = pygame.image.load(os.path.join(VERSION_PATH, "src", "assets", asset))
-        versionInfo["assets"].append(image)
+        if asset.endswith((".png", ".blig", ".itig")):
+            path = os.path.join(VERSION_PATH, "src", "assets", asset)
+            try:
+                image = pygame.image.load(path).convert_alpha()
+                name = os.path.splitext(asset)[0]
+                versionInfo["assets"][name] = image
+            except Exception as e: crash("1x007", e)
+        else: crash("1x008")
 
-    return versionInfo
 
-versionInfo = setUpROM()
+setUpROM()
 print(versionInfo)
