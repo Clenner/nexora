@@ -59,6 +59,25 @@
         <div class="cause">Cause: Missing src folder in selected version</div>
     </div>
 
-    <!-- Add more errors here -->
+    <div class="error">
+        <div class="code">1x005</div>
+        <div class="cause">Cause: Missing required folder inside src (blocks/items/recipes/tags/dimensions)</div>
+    </div>
+
+    <div class="error">
+        <div class="code">1x006</div>
+        <div class="cause">Cause: File extension mismatch inside a data folder (e.g. dirt.item inside blocks)</div>
+    </div>
+
+    <div class="error">
+        <div class="code">1x007</div>
+        <div class="cause">Cause: Asset failed to load (pygame image load error or corrupt file)</div>
+    </div>
+
+    <div class="error">
+        <div class="code">1x008</div>
+        <div class="cause">Cause: Invalid file found in assets folder (unsupported extension)</div>
+    </div>
+
 </body>
 </html>
