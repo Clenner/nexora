@@ -4,7 +4,8 @@ import os
 import pygame
 import time
 
-VERSION_PATH = sys.argv[1]
+try: VERSION_PATH = sys.argv[1]
+except: VERSION_PATH = r"C:\Users\Lozin\python\Nexora\Launcher\versions\1.0-ALPHA-001"
 
 versionInfo = {
     "attributes": {},
@@ -19,7 +20,7 @@ versionInfo = {
     "assets": {}
 }
 
-randomAccessMemory = {}
+RAM = {}
 
 def crash(num, e=""):
     print(f"Crash: Error code '{num}', additional error info: '{e}'")
@@ -70,7 +71,7 @@ def setUpROM():
         if asset.endswith((".png", ".blig", ".itig")):
             path = os.path.join(VERSION_PATH, "src", "assets", asset)
             try:
-                image = pygame.image.load(path).convert_alpha()
+                image = pygame.image.load(path)
                 name = os.path.splitext(asset)[0]
                 versionInfo["assets"][name] = image
             except Exception as e: crash("1x007", e)
