@@ -1,6 +1,8 @@
 import sys
 import json
 import os
+import pygame
+import time
 
 VERSION_PATH = sys.argv[1]
 
@@ -13,15 +15,37 @@ versionInfo = {
     "items": {},
     "processes": {},
     "recipes": {},
-    "tags": {}
+    "tags": {},
+    "assets": {}
 }
+
+randomAccessMemory = {}
 
 def crash(num):
     print(f"Crash: Error code '{num}'")
     return False
 
+class Entity:
+    def __init__(self, name, mhp=20, inventory=False, pcs=None):
+        if pcs is None:
+            pcs = []
+
+        self.name = name
+        self.health = mhp
+        self.max_health = mhp
+        self.inventory = inventory
+        self.processes = [
+            os.path.join(VERSION_PATH, "src", "processes", process + ".py")
+            for process in pcs
+        ]
+
 def setUpROM():
-    for folder_name in ["blocks", "dimensions", "entitys", "recipes", "tags"]:
+    # Basic checks
+    #assets
+    #gooeys
+    #processes
+    #entitys
+    for folder_name in ["blocks", "dimensions", "recipes", "tags", "items"]:
 
         folder_path = os.path.join(VERSION_PATH, "src", folder_name)
 
@@ -42,6 +66,9 @@ def setUpROM():
             except Exception as e:
                 print(f"[ROM ERROR] Failed to load {file_path}: {e}")
                 versionInfo[folder_name][name] = None
+    for asset in os.listdir(os.path.join(VERSION_PATH, "src", "assets")):
+        image = pygame.image.load(os.path.join(VERSION_PATH, "src", "assets", asset))
+        versionInfo["assets"].append(image)
 
     return versionInfo
 
