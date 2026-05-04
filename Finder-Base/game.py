@@ -17,7 +17,8 @@ versionInfo = {
     "processes": {},
     "recipes": {},
     "tags": {},
-    "assets": {}
+    "assets": {},
+    "sounds": {}
 }
 
 RAM = {}
@@ -42,7 +43,6 @@ class Entity:
 
 def setUpROM():
     # Basic checks
-    #assets
     #gooeys
     #processes
     #entitys
@@ -67,15 +67,28 @@ def setUpROM():
             except Exception as e:
                 print(f"[ROM ERROR] Failed to load {file_path}: {e}")
                 versionInfo[folder_name][name] = None
-    for asset in os.listdir(os.path.join(VERSION_PATH, "src", "assets")):
+
+    path = os.path.join(VERSION_PATH, "src", "assets")
+    for asset in os.listdir(path):
         if asset.endswith((".png", ".blig", ".itig")):
-            path = os.path.join(VERSION_PATH, "src", "assets", asset)
+            path = os.path.join(path, asset)
             try:
                 image = pygame.image.load(path)
                 name = os.path.splitext(asset)[0]
                 versionInfo["assets"][name] = image
             except Exception as e: crash("1x007", e)
         else: crash("1x008")
+    
+    path = os.path.join(VERSION_PATH, "src", "sounds")
+    for sound in os.listdir(path):
+        if sound.endswith(".snd"):
+            path = os.path.join(path, sound)
+            try:
+                audio = pygame.mixer.Sound(path)
+                name = os.path.splitext(audio)[0]
+                versionInfo["sounds"][name] = audio
+            except Exception as e: crash("1x009", e)
+        else: crash("1x00A")
 
 
 setUpROM()
