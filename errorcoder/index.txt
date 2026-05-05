@@ -79,5 +79,15 @@
         <div class="cause">Cause: Invalid file found in assets folder (unsupported extension)</div>
     </div>
 
+    <div class="error">
+        <div class="code">1x009</div>
+        <div class="cause">Cause: Sound failed to load (pygame mixer error or corrupt .snd file)</div>
+    </div>
+
+    <div class="error">
+        <div class="code">1x00A</div>
+        <div class="cause">Cause: Invalid file found in sounds folder (unsupported extension)</div>
+    </div>
+
 </body>
 </html>
