@@ -4,6 +4,8 @@ import os
 import pygame
 import time
 
+pygame.mixer.init()
+
 try: VERSION_PATH = sys.argv[1]
 except: VERSION_PATH = r"C:\Users\Lozin\python\Nexora\Launcher\versions\1.0-ALPHA-001"
 
@@ -15,6 +17,7 @@ versionInfo = {
     "gooeys": {},
     "items": {},
     "processes": {},
+    "start-processes": {},
     "recipes": {},
     "tags": {},
     "assets": {},
@@ -23,9 +26,10 @@ versionInfo = {
 
 RAM = {}
 
-def crash(num, e=""):
-    print(f"Crash: Error code '{num}', additional error info: '{e}'")
-    return False
+def crash(num, e="", r=False):
+    print(f"Crash: Error code '{num}'{f", additional error info: '{e}'" if e else ''}")
+    if r: return True
+    else: sys.exit(); return False
 
 class Entity:
     def __init__(self, name, mhp=20, inventory=False, pcs=None):
@@ -41,19 +45,41 @@ class Entity:
             for process in pcs
         ]
 
+class Ctx:
+    def __init__(self, entity, world, upper, delta):
+        self.entity = entity
+        self.world = world
+        self.upper = upper
+        self.delta = delta
+
+    # --- ENTITY CONTROL ---
+    def move(self, dx, dy):
+        self.entity["x"] += dx
+        self.entity["y"] += dy
+
+    # --- WORLD CONTROL ---
+    def set_block(self, x, y, block):
+        self.world.set_block(x, y, block)
+
+    def get_block(self, x, y):
+        return self.world.get_block(x, y)
+
+    # --- INPUT ---
+    def key_down(self, key):
+        return self.upper.is_down(key)
+
 def setUpROM():
+    global VERSION_PATH
+
     # Basic checks
-    #gooeys
-    #processes
-    #entitys
-    for folder_name in ["blocks", "dimensions", "recipes", "tags", "items"]:
+    for folder_name in ["blocks", "dimensions", "recipes", "tags", "items", "entitys"]:
 
         folder_path = os.path.join(VERSION_PATH, "src", folder_name)
 
-        if not os.path.isdir(folder_path): crash("1x005"); sys.exit()
+        if not os.path.isdir(folder_path): crash("1x005")
 
         for file in os.listdir(folder_path):
-            if not file.endswith("." + folder_name[:-1]): crash("1x006"); sys.exit()
+            if not file.endswith("." + folder_name[:-1]): crash("1x006", r=True)
 
             name = os.path.splitext(file)[0]
             file_path = os.path.join(folder_path, file)
@@ -68,27 +94,29 @@ def setUpROM():
                 print(f"[ROM ERROR] Failed to load {file_path}: {e}")
                 versionInfo[folder_name][name] = None
 
+    # Load assets
     path = os.path.join(VERSION_PATH, "src", "assets")
     for asset in os.listdir(path):
         if asset.endswith((".png", ".blig", ".itig")):
-            path = os.path.join(path, asset)
+            subpath = os.path.join(path, asset)
             try:
-                image = pygame.image.load(path)
+                image = pygame.image.load(subpath)
                 name = os.path.splitext(asset)[0]
                 versionInfo["assets"][name] = image
             except Exception as e: crash("1x007", e)
-        else: crash("1x008")
+        else: crash("1x008", r=True)
     
+    # Load sounds
     path = os.path.join(VERSION_PATH, "src", "sounds")
     for sound in os.listdir(path):
         if sound.endswith(".snd"):
-            path = os.path.join(path, sound)
+            subpath = os.path.join(path, sound)
             try:
-                audio = pygame.mixer.Sound(path)
-                name = os.path.splitext(audio)[0]
+                audio = pygame.mixer.Sound(subpath)
+                name = os.path.splitext(sound)[0]
                 versionInfo["sounds"][name] = audio
             except Exception as e: crash("1x009", e)
-        else: crash("1x00A")
+        else: crash("1x00A", r=True)
 
 
 setUpROM()

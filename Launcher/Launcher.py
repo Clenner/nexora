@@ -13,9 +13,9 @@ WIN_H = 600
 WIN = pygame.display.set_mode((WIN_W, WIN_H), pygame.RESIZABLE, vsync=1)
 
 pygame.display.set_caption("FLauncher")
-pygame.display.set_icon(pygame.image.load("Launcher/assets/ico.png"))
+pygame.display.set_icon(pygame.image.load("Nexora/Launcher/assets/ico.png"))
 
-VERSIONS_DIR = "Launcher/versions"
+VERSIONS_DIR = "Nexora/Launcher/versions"
 versions_list = os.listdir(VERSIONS_DIR)
 
 FPS = 60
@@ -67,7 +67,7 @@ def main():
                     elif event.button == 5: v = min(len(versions_list)-1, v+1)
                     elif event.button == 1:
                         if not os.path.isdir(os.path.join(VERSIONS_DIR, versions_list[v], "src")): run = crash("1x004")
-                        play(f"Finder-Base/game.py", versions_list[v])
+                        play(f"Nexora/Finder-Base/game.py", versions_list[v])
             elif event.type == pygame.VIDEORESIZE:
                 WIN_W, WIN_H = event.w, event.h
                 WIN = pygame.display.set_mode((WIN_W, WIN_H), pygame.RESIZABLE, vsync=1)
