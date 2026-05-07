@@ -45,11 +45,9 @@ jobs:
             https://cocalc.com/github/clenner/nexora/
 
             Errors can be found at:
-            https://clenner.github.io/errorcoder/
+            https://clenner.github.io/nexora/errorcoder/ or https://cocalc.com/github/clenner/nexora/blob/errorcoder/errorcoder/index.html
 
-            or
-
-            https://cocalc.com/github/clenner/nexora/blob/errorcoder/errorcoder/index.html
+            Extra information: (useless)
 
             Commit author: ${{ github.actor }}
 
