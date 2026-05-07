@@ -46,27 +46,8 @@ class Entity:
         ]
 
 class Ctx:
-    def __init__(self, entity, world, upper, delta):
-        self.entity = entity
-        self.world = world
-        self.upper = upper
-        self.delta = delta
-
-    # --- ENTITY CONTROL ---
-    def move(self, dx, dy):
-        self.entity["x"] += dx
-        self.entity["y"] += dy
-
-    # --- WORLD CONTROL ---
-    def set_block(self, x, y, block):
-        self.world.set_block(x, y, block)
-
-    def get_block(self, x, y):
-        return self.world.get_block(x, y)
-
-    # --- INPUT ---
-    def key_down(self, key):
-        return self.upper.is_down(key)
+    def __init__(self):
+        pass
 
 def setUpROM():
     global VERSION_PATH
@@ -121,3 +102,20 @@ def setUpROM():
 
 setUpROM()
 print(versionInfo)
+
+'''
+with open("start.lst", "r") as f:
+    for line in f:
+        # Clean whitespace and split by comma
+        line = line.strip()
+        
+        # Skip empty lines to prevent errors
+        if not line:
+            continue
+            
+        # Unpack the 3 parts
+        folder, category, script = line.split(",")
+        
+        # Use them to build your path or load the script
+        print(f"Executing: {folder}/{category}/{script}")
+'''
