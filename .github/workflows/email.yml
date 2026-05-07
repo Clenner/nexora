@@ -1,0 +1,61 @@
+name: Email on Push
+
+on:
+  push:
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+
+          subject: "N|O_O|NE KNOWS, LET THEM"
+
+          to: |
+            person1@gmail.com,
+            person2@gmail.com,
+            person3@gmail.com,
+            person4@gmail.com,
+            person5@gmail.com,
+            person6@gmail.com
+
+          from: Clenner Repo Updates
+
+          body: |
+            Hello, guys, Clenner here! (or Jamee if you know me otherwise)
+
+            As you know, I am making a game, and have asked you to be a playtester. This email will be sent to you everytime there is an update to the repo.
+
+            If you would like to unsubscribe, please ask me at school to remove you from the list.
+
+            Anyways, the link is:
+            https://github.com/Clenner/nexora/
+
+            If you want some more details, here is the commit message:
+            "${{ github.event.head_commit.message }}"
+
+            If you want to use the repo at school, go to:
+            https://cocalc.com/github/clenner/nexora/
+
+            Errors can be found at:
+            https://clenner.github.io/errorcoder/
+
+            or
+
+            https://cocalc.com/github/clenner/nexora/blob/errorcoder/errorcoder/index.html
+
+            Commit author: ${{ github.actor }}
+
+            Branch: ${{ github.ref_name }}
+
+            Direct commit link:
+            https://github.com/${{ github.repository }}/commit/${{ github.sha }}
