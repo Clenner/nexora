@@ -106,16 +106,12 @@ print(versionInfo)
 '''
 with open("start.lst", "r") as f:
     for line in f:
-        # Clean whitespace and split by comma
         line = line.strip()
         
-        # Skip empty lines to prevent errors
         if not line:
             continue
             
-        # Unpack the 3 parts
         folder, category, script = line.split(",")
         
-        # Use them to build your path or load the script
         print(f"Executing: {folder}/{category}/{script}")
 '''
