@@ -3,6 +3,7 @@ import json
 import os
 import pygame
 import time
+import decker
 
 pygame.mixer.init()
 
@@ -99,6 +100,7 @@ def setUpROM():
             except Exception as e: crash("1x009", e)
         else: crash("1x00A", r=True)
 
+deck = decker.check(); crash(deck) if deck else None 
 
 setUpROM()
 print(versionInfo)
